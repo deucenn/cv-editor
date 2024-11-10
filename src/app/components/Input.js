@@ -8,6 +8,8 @@ import {
 import ProfileForm from "./ProfileForm";
 import WorkForm from "./WorkForm";
 import EducationForm from "./EducationForm";
+import SkillsForm from "./SkillsForm";
+import ProjectsForm from "./ProjectsForm";
 
 export default function Input() {
   return (
@@ -25,7 +27,7 @@ export default function Input() {
           <AccordionItem value="item-2">
             <AccordionTrigger>Work</AccordionTrigger>
             <AccordionContent>
-            <div className="ml-5">
+              <div className="ml-5">
                 <WorkForm />
               </div>
             </AccordionContent>
@@ -33,21 +35,25 @@ export default function Input() {
           <AccordionItem value="item-3">
             <AccordionTrigger>Education</AccordionTrigger>
             <AccordionContent>
-            <div className="ml-5">
+              <div className="ml-5">
                 <EducationForm />
               </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
-            <AccordionTrigger>Skill</AccordionTrigger>
+            <AccordionTrigger>Skills</AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+              <div className="ml-5">
+                <SkillsForm />
+              </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
             <AccordionTrigger>Projects</AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+              <div className="ml-5">
+                <ProjectsForm />
+              </div>
             </AccordionContent>
           </AccordionItem>
         </Accordion>

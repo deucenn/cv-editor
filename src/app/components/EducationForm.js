@@ -51,10 +51,10 @@ export default function EducationForm() {
       </div>
       <div className="flex items-center gap-2">
         <Button variant="secondary" className="h-10 w-20 px-3 py-2 rounded">
-          Add Job
+          Add 
         </Button>
         <Button variant="destructive" className="h-10 w-20 px-3 py-2 rounded">
-          Delete Job
+          Delete 
         </Button>
       </div>
     </>
