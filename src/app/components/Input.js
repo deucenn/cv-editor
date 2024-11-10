@@ -6,6 +6,8 @@ import {
 } from "@/components/ui/accordion";
 
 import ProfileForm from "./ProfileForm";
+import WorkForm from "./WorkForm";
+import EducationForm from "./EducationForm";
 
 export default function Input() {
   return (
@@ -15,19 +17,25 @@ export default function Input() {
           <AccordionItem value="item-1">
             <AccordionTrigger>Profile</AccordionTrigger>
             <AccordionContent>
-              <ProfileForm />
+              <div className="ml-5">
+                <ProfileForm />
+              </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>Work</AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+            <div className="ml-5">
+                <WorkForm />
+              </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>Education</AccordionTrigger>
             <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
+            <div className="ml-5">
+                <EducationForm />
+              </div>
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
