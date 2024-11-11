@@ -6,10 +6,10 @@ import {
 } from "@/components/ui/accordion";
 
 import ProfileForm from "./ProfileForm";
-import WorkForm from "./WorkForm";
-import EducationForm from "./EducationForm";
-import SkillsForm from "./SkillsForm";
-import ProjectsForm from "./ProjectsForm";
+import WorkFormsContainer from "./WorkForm";
+import EducationFormsContainer from "./EducationForm";
+import SkillsFormsContainer from "./SkillsForm";
+import ProjectsFormsContainer from "./ProjectsForm";
 
 export default function Input() {
   return (
@@ -28,7 +28,7 @@ export default function Input() {
             <AccordionTrigger>Work</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <WorkForm />
+                <WorkFormsContainer />
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -36,7 +36,7 @@ export default function Input() {
             <AccordionTrigger>Education</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <EducationForm />
+                <EducationFormsContainer />
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -44,7 +44,7 @@ export default function Input() {
             <AccordionTrigger>Skills</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <SkillsForm />
+                <SkillsFormsContainer />
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -52,7 +52,7 @@ export default function Input() {
             <AccordionTrigger>Projects</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <ProjectsForm />
+                <ProjectsFormsContainer />
               </div>
             </AccordionContent>
           </AccordionItem>
