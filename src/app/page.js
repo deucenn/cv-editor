@@ -1,5 +1,6 @@
 import NavBar from "./components/Navbar";
 import Input from "./components/Input";
+import Preview from "./components/Preview";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <NavBar />
       <div className="grid grid-cols-2">
         <Input />
-        <p>Bye</p>
+        <Preview />
       </div>
     </>
   );
