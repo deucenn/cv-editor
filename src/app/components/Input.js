@@ -11,7 +11,7 @@ import EducationFormsContainer from "./EducationForm";
 import SkillsFormsContainer from "./SkillsForm";
 import ProjectsFormsContainer from "./ProjectsForm";
 
-export default function Input() {
+export default function Input({profileData, onDataChange}) {
   return (
     <>
       <div className="font-geist w-1/2 mt-10 ml-10">
@@ -20,7 +20,7 @@ export default function Input() {
             <AccordionTrigger>Profile</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <ProfileForm />
+                <ProfileForm profileData={profileData} onDataChange={onDataChange} />
               </div>
             </AccordionContent>
           </AccordionItem>
