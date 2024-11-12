@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from "react";
 import NavBar from "./components/Navbar";
@@ -22,8 +22,11 @@ export default function Home() {
     <>
       <NavBar />
       <div className="grid grid-cols-2">
-        <Input profileData={profileData} onDataChange={handleProfileDataChange} />
-        <Preview profileData={profileData}/>
+        <Input
+          profileData={profileData}
+          onDataChange={handleProfileDataChange}
+        />
+        <Preview profileData={profileData} />
       </div>
     </>
   );
