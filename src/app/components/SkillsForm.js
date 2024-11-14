@@ -8,7 +8,7 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function SkillsForm({ skillItem, onDelete, isDeleteDisabled, onDataChange }) {
-  const [skillDetails, setSkillDetails] = useState(skillItem.skillDetails || []);
+  const [skillDetails, setSkillDetails] = useState(skillItem.skillDetails);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -96,7 +96,10 @@ function SkillsForm({ skillItem, onDelete, isDeleteDisabled, onDataChange }) {
   );
 }
 
-export default function SkillFormsContainer({ skillsData, onSkillsDataChange }) {
+export default function SkillFormsContainer({
+  skillsData,
+  onSkillsDataChange,
+}) {
   const handleAddForm = () => {
     const newSkillItem = {
       id: Date.now(),

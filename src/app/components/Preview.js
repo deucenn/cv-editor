@@ -13,6 +13,7 @@ export default function Preview({ profileData }) {
 
       {/* Work Info */}
       <div>
+      <p>-----</p>
         <p>Job:</p>
         {profileData.work.map((workItem, index) => (
           <div key={workItem.id}>
@@ -27,12 +28,13 @@ export default function Preview({ profileData }) {
               ))}
             </ul>
             {index < profileData.work.length - 1 && <hr />}{" "}
-            {/* Adds a separator between work entries */}
+            {/* Adds a separator between entries */}
           </div>
         ))}
       </div>
       {/* Education Info */}
       <div>
+      <p>-----</p>
         <p>Education:</p>
         {profileData.education.map((educationItem, index) => (
           <div key={educationItem.id}>
@@ -43,12 +45,13 @@ export default function Preview({ profileData }) {
             <p>Start Date: {educationItem.startDateEducation}</p>
             <p>End Date: {educationItem.endDateEducation}</p>
             {index < profileData.education.length - 1 && <hr />}{" "}
-            {/* Adds a separator between work entries */}
+            {/* Adds a separator between entries */}
           </div>
         ))}
       </div>
       {/* Skills Info */}
       <div>
+      <p>-----</p>
         <p>Skills:</p>
         {profileData.skills.map((skillItem, index) => (
           <div key={skillItem.id}>
@@ -60,16 +63,17 @@ export default function Preview({ profileData }) {
               ))}
             </ul>
             {index < profileData.skills.length - 1 && <hr />}{" "}
-            {/* Adds a separator between work entries */}
+            {/* Adds a separator between entries */}
           </div>
         ))}
       </div>
       {/* Projects Info */}
       <div>
+        <p>-----</p>
         <p>Projects:</p>
         {profileData.projects.map((projectItem, index) => (
           <div key={projectItem.id}>
-            <p>Skill: {projectItem.projectName}</p>
+            <p>Project: {projectItem.projectName}</p>
             <p>Description: {projectItem.projectDesc}</p>
             <p>Link: {projectItem.link}</p>
             <p>Tools:</p>
@@ -79,7 +83,7 @@ export default function Preview({ profileData }) {
               ))}
             </ul>
             {index < profileData.projects.length - 1 && <hr />}{" "}
-            {/* Adds a separator between work entries */}
+            {/* Adds a separator between entries */}
           </div>
         ))}
       </div>
