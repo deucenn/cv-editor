@@ -11,7 +11,11 @@ import EducationFormsContainer from "./EducationForm";
 import SkillsFormsContainer from "./SkillsForm";
 import ProjectsFormsContainer from "./ProjectsForm";
 
-export default function Input({profileData, onDataChange}) {
+export default function Input({
+  profileData,
+  onProfileDataChange,
+  onWorkDataChange,
+}) {
   return (
     <>
       <div className="font-geist w-1/2 mt-10 ml-10">
@@ -20,7 +24,10 @@ export default function Input({profileData, onDataChange}) {
             <AccordionTrigger>Profile</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <ProfileForm profileData={profileData} onDataChange={onDataChange} />
+                <ProfileForm
+                  profileData={profileData}
+                  onDataChange={onProfileDataChange}
+                />
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -28,7 +35,10 @@ export default function Input({profileData, onDataChange}) {
             <AccordionTrigger>Work</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <WorkFormsContainer />
+                <WorkFormsContainer
+                  workData={profileData.work}
+                  onWorkDataChange={onWorkDataChange}
+                />
               </div>
             </AccordionContent>
           </AccordionItem>

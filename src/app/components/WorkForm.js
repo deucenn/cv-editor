@@ -7,17 +7,49 @@ import { Button } from "@/components/ui/button";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-function WorkForm({ onDelete, isDeleteDisabled }) {
-  const [jobResponsibilities, setJobResponsibilities] = useState([{ id: 1 }]);
+function WorkForm({ workItem, onDelete, isDeleteDisabled, onDataChange }) {
+  const [jobResponsibilities, setJobResponsibilities] = useState(
+    workItem.jobResponsibilities
+  );
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onDataChange(workItem.id, { ...workItem, [name]: value });
+  };
 
   const handleAddResponsibility = () => {
-    setJobResponsibilities([...jobResponsibilities, { id: Date.now() }]);
+    const newResponsibility = { id: Date.now(), text: "" }; // Initialize text as an empty string
+    const updatedResponsibilities = [...jobResponsibilities, newResponsibility];
+    setJobResponsibilities(updatedResponsibilities);
+    onDataChange(workItem.id, {
+      ...workItem,
+      jobResponsibilities: updatedResponsibilities,
+    });
   };
 
   const handleDeleteResponsibility = (id) => {
-    setJobResponsibilities(
-      jobResponsibilities.filter((responsibility) => responsibility.id !== id)
+    const updatedResponsibilities = jobResponsibilities.filter(
+      (resp) => resp.id !== id
     );
+    setJobResponsibilities(updatedResponsibilities);
+    onDataChange(workItem.id, {
+      ...workItem,
+      jobResponsibilities: updatedResponsibilities,
+    });
+  };
+
+  const handleResponsibilityChange = (index, e) => {
+    const updatedResponsibilities = jobResponsibilities.map(
+      (responsibility, i) =>
+        i === index
+          ? { ...responsibility, text: e.target.value }
+          : responsibility
+    );
+    setJobResponsibilities(updatedResponsibilities);
+    onDataChange(workItem.id, {
+      ...workItem,
+      jobResponsibilities: updatedResponsibilities,
+    });
   };
 
   return (
@@ -26,6 +58,9 @@ function WorkForm({ onDelete, isDeleteDisabled }) {
       <Input
         type="text"
         id="companyName"
+        name="companyName"
+        value={workItem.companyName}
+        onChange={handleChange}
         placeholder="Google"
         className="rounded mb-3"
       />
@@ -33,6 +68,9 @@ function WorkForm({ onDelete, isDeleteDisabled }) {
       <Input
         type="text"
         id="jobTitle"
+        name="jobTitle"
+        value={workItem.jobTitle}
+        onChange={handleChange}
         placeholder="Software Engineer"
         className="rounded mb-3"
       />
@@ -40,6 +78,9 @@ function WorkForm({ onDelete, isDeleteDisabled }) {
       <Input
         type="text"
         id="startDate"
+        name="startDate"
+        value={workItem.startDate}
+        onChange={handleChange}
         placeholder="May 2022"
         className="rounded mb-3"
       />
@@ -47,6 +88,9 @@ function WorkForm({ onDelete, isDeleteDisabled }) {
       <Input
         type="text"
         id="endDate"
+        name="endDate"
+        value={workItem.endDate}
+        onChange={handleChange}
         placeholder="May 2024 / Present / Etc."
         className="rounded mb-3"
       />
@@ -56,6 +100,8 @@ function WorkForm({ onDelete, isDeleteDisabled }) {
           <Input
             type="text"
             placeholder="Some cool stuff"
+            value={responsibility.text || ""}
+            onChange={(e) => handleResponsibilityChange(index, e)}
             className="rounded flex-grow"
           />
           <Button
@@ -87,24 +133,39 @@ function WorkForm({ onDelete, isDeleteDisabled }) {
   );
 }
 
-export default function WorkFormsContainer() {
-  const [forms, setForms] = useState([{ id: 1 }]);
-
+export default function WorkFormsContainer({ workData, onWorkDataChange }) {
   const handleAddForm = () => {
-    setForms([...forms, { id: Date.now() }]);
+    const newWorkItem = {
+      id: Date.now(),
+      companyName: "",
+      jobTitle: "",
+      startDate: "",
+      endDate: "",
+      jobResponsibilities: [{ id: Date.now(), text: "" }],
+    };
+    onWorkDataChange([...workData, newWorkItem]);
   };
 
   const handleDeleteForm = (id) => {
-    setForms(forms.filter((form) => form.id !== id));
+    onWorkDataChange(workData.filter((item) => item.id !== id));
+  };
+
+  const handleWorkDataChange = (id, newData) => {
+    const updatedWorkData = workData.map((workItem) =>
+      workItem.id === id ? { ...workItem,...newData } : workItem
+    );
+    onWorkDataChange(updatedWorkData);
   };
 
   return (
     <div>
-      {forms.map((form, index) => (
+      {workData.map((workItem, index) => (
         <WorkForm
-          key={form.id}
-          onDelete={() => handleDeleteForm(form.id)}
+          key={workItem.id}
+          workItem={workItem}
+          onDelete={() => handleDeleteForm(workItem.id)}
           isDeleteDisabled={index === 0}
+          onDataChange={handleWorkDataChange}
         />
       ))}
       <Button
@@ -117,4 +178,3 @@ export default function WorkFormsContainer() {
     </div>
   );
 }
-

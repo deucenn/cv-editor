@@ -7,15 +7,32 @@ import Preview from "./components/Preview";
 
 export default function Home() {
   const [profileData, setProfileData] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    location: "",
-    link: "",
+    profile: {
+      fullName: "",
+      email: "",
+      phoneNumber: "",
+      location: "",
+      link: "",
+    },
+    work: [
+      {
+        id: 1,
+        companyName: "",
+        jobTitle: "",
+        startDate: "",
+        endDate: "",
+        jobResponsibilities: [""],
+      },
+    ],
+    // Add other sections like education, skills, etc. in the future.
   });
 
   const handleProfileDataChange = (newProfileData) => {
-    setProfileData(newProfileData);
+    setProfileData((prev) => ({ ...prev, profile: newProfileData }));
+  };
+
+  const handleWorkDataChange = (updatedWorkData) => {
+    setProfileData((prev) => ({ ...prev, work: updatedWorkData })); // Update `work` with new array
   };
 
   return (
@@ -24,7 +41,8 @@ export default function Home() {
       <div className="grid grid-cols-2">
         <Input
           profileData={profileData}
-          onDataChange={handleProfileDataChange}
+          onProfileDataChange={handleProfileDataChange}
+          onWorkDataChange={handleWorkDataChange}
         />
         <Preview profileData={profileData} />
       </div>

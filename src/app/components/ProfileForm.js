@@ -9,6 +9,7 @@ export default function ProfileForm({ profileData, onDataChange }) {
     const { name, value } = e.target;
     const updatedProfileData = { ...profileData, [name]: value };
 
+    // Pass the updated data back to the parent
     onDataChange(updatedProfileData);
   };
 
@@ -67,3 +68,4 @@ export default function ProfileForm({ profileData, onDataChange }) {
     </div>
   );
 }
+
