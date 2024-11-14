@@ -31,6 +31,23 @@ export default function Preview({ profileData }) {
           </div>
         ))}
       </div>
+      {/* Education Info */}
+      <div>
+        <p>Education:</p>
+        {profileData.education.map((educationItem, index) => (
+          <div key={educationItem.id}>
+            <p>School Name: {educationItem.schoolName}</p>
+            <p>Major: {educationItem.major}</p>
+            <p>Degree: {educationItem.degree}</p>
+            <p>GPA: {educationItem.gpa}</p>
+            <p>Start Date: {educationItem.startDate}</p>
+            <p>End Date: {educationItem.endDate}</p>
+            <p>Responsibilities:</p>
+            {index < profileData.work.length - 1 && <hr />}{" "}
+            {/* Adds a separator between work entries */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -14,7 +14,7 @@ import ProjectsFormsContainer from "./ProjectsForm";
 export default function Input({
   profileData,
   onProfileDataChange,
-  onWorkDataChange,
+  onWorkDataChange, onEducationDataChange
 }) {
   return (
     <>
@@ -46,7 +46,10 @@ export default function Input({
             <AccordionTrigger>Education</AccordionTrigger>
             <AccordionContent>
               <div className="ml-5">
-                <EducationFormsContainer />
+                <EducationFormsContainer 
+                  educationData={profileData.education}
+                  onEducationDataChange={onEducationDataChange}
+                />
               </div>
             </AccordionContent>
           </AccordionItem>

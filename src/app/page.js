@@ -24,6 +24,17 @@ export default function Home() {
         jobResponsibilities: [""],
       },
     ],
+    education: [
+      {
+        id: 1,
+        schoolName: "",
+        degree: "",
+        major: "",
+        gpa: "",
+        startDate: "",
+        endDate: "",
+      },
+    ],
     // Add other sections like education, skills, etc. in the future.
   });
 
@@ -32,7 +43,11 @@ export default function Home() {
   };
 
   const handleWorkDataChange = (updatedWorkData) => {
-    setProfileData((prev) => ({ ...prev, work: updatedWorkData })); // Update `work` with new array
+    setProfileData((prev) => ({ ...prev, work: updatedWorkData }));
+  };
+
+  const handleEducationDataChange = (updatedEducationData) => {
+    setProfileData((prev) => ({ ...prev, education: updatedEducationData }));
   };
 
   return (
@@ -43,6 +58,7 @@ export default function Home() {
           profileData={profileData}
           onProfileDataChange={handleProfileDataChange}
           onWorkDataChange={handleWorkDataChange}
+          onEducationDataChange={handleEducationDataChange}
         />
         <Preview profileData={profileData} />
       </div>

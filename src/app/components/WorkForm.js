@@ -152,7 +152,7 @@ export default function WorkFormsContainer({ workData, onWorkDataChange }) {
 
   const handleWorkDataChange = (id, newData) => {
     const updatedWorkData = workData.map((workItem) =>
-      workItem.id === id ? { ...workItem,...newData } : workItem
+      workItem.id === id ? { ...workItem, ...newData } : workItem
     );
     onWorkDataChange(updatedWorkData);
   };
