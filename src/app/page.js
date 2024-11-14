@@ -31,11 +31,25 @@ export default function Home() {
         degree: "",
         major: "",
         gpa: "",
-        startDate: "",
-        endDate: "",
+        startDateEducation: "",
+        endDateEducation: "",
       },
     ],
-    // Add other sections like education, skills, etc. in the future.
+    skills: [
+      {
+        id: 1,
+        skillName: "",
+        skillDetails: [""],
+      }
+    ],
+    projects: [
+      {
+        projectName: "",
+        projectDesc: "",
+        projectLink: "",
+        projectTools: [""]
+      }
+    ]
   });
 
   const handleProfileDataChange = (newProfileData) => {
@@ -50,6 +64,14 @@ export default function Home() {
     setProfileData((prev) => ({ ...prev, education: updatedEducationData }));
   };
 
+  const handleSkillsDataChange = (updatedSkillsData) => {
+    setProfileData((prev) => ({...prev, skills: updatedSkillsData}))
+  }
+
+  const handleProjectsDataChange = (updatedProjectsData) => {
+    setProfileData((prev) => ({...prev, projects: updatedProjectsData}))
+  }
+
   return (
     <>
       <NavBar />
@@ -59,6 +81,8 @@ export default function Home() {
           onProfileDataChange={handleProfileDataChange}
           onWorkDataChange={handleWorkDataChange}
           onEducationDataChange={handleEducationDataChange}
+          onSkillsDataChange={handleSkillsDataChange}
+          onProjectsDataChange={handleProjectsDataChange}
         />
         <Preview profileData={profileData} />
       </div>

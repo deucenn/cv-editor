@@ -23,7 +23,7 @@ export default function Preview({ profileData }) {
             <p>Responsibilities:</p>
             <ul>
               {workItem.jobResponsibilities.map((resp, i) => (
-                <li key={i}>{resp.text}</li> // Access `text` field of each responsibility
+                <li key={i}>{resp.text}</li> 
               ))}
             </ul>
             {index < profileData.work.length - 1 && <hr />}{" "}
@@ -37,13 +37,48 @@ export default function Preview({ profileData }) {
         {profileData.education.map((educationItem, index) => (
           <div key={educationItem.id}>
             <p>School Name: {educationItem.schoolName}</p>
-            <p>Major: {educationItem.major}</p>
             <p>Degree: {educationItem.degree}</p>
+            <p>Major: {educationItem.major}</p>
             <p>GPA: {educationItem.gpa}</p>
-            <p>Start Date: {educationItem.startDate}</p>
-            <p>End Date: {educationItem.endDate}</p>
-            <p>Responsibilities:</p>
-            {index < profileData.work.length - 1 && <hr />}{" "}
+            <p>Start Date: {educationItem.startDateEducation}</p>
+            <p>End Date: {educationItem.endDateEducation}</p>
+            {index < profileData.education.length - 1 && <hr />}{" "}
+            {/* Adds a separator between work entries */}
+          </div>
+        ))}
+      </div>
+      {/* Skills Info */}
+      <div>
+        <p>Skills:</p>
+        {profileData.skills.map((skillItem, index) => (
+          <div key={skillItem.id}>
+            <p>Skill: {skillItem.skillName}</p>
+            <p>Details:</p>
+            <ul>
+              {skillItem.skillDetails.map((tool, i) => (
+                <li key={i}>{tool.text}</li> 
+              ))}
+            </ul>
+            {index < profileData.skills.length - 1 && <hr />}{" "}
+            {/* Adds a separator between work entries */}
+          </div>
+        ))}
+      </div>
+      {/* Projects Info */}
+      <div>
+        <p>Projects:</p>
+        {profileData.projects.map((projectItem, index) => (
+          <div key={projectItem.id}>
+            <p>Skill: {projectItem.projectName}</p>
+            <p>Description: {projectItem.projectDesc}</p>
+            <p>Link: {projectItem.link}</p>
+            <p>Tools:</p>
+            <ul>
+              {projectItem.projectTools.map((project, i) => (
+                <li key={i}>{project.text}</li> 
+              ))}
+            </ul>
+            {index < profileData.projects.length - 1 && <hr />}{" "}
             {/* Adds a separator between work entries */}
           </div>
         ))}

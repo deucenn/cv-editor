@@ -98,8 +98,8 @@ export default function EducationFormsContainer({
       degree: "",
       major: "",
       gpa: "",
-      startDate: "",
-      endDate: "",
+      startDateEducation: "",
+      endDateEducation: "",
     }
     setForms([...forms, newEducationItem]);
     onEducationDataChange([...educationData, newEducationItem])

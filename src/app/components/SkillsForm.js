@@ -7,15 +7,42 @@ import { Button } from "@/components/ui/button";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-function SkillsForm({ onDelete, isDeleteDisabled }) {
-  const [skillDetails, setSkillDetails] = useState([{ id: 1 }]);
+function SkillsForm({ skillItem, onDelete, isDeleteDisabled, onDataChange }) {
+  const [skillDetails, setSkillDetails] = useState(skillItem.skillDetails || []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    onDataChange(skillItem.id, { ...skillItem, [name]: value });
+  };
 
   const handleAddDetail = () => {
-    setSkillDetails([...skillDetails, { id: Date.now() }]);
+    const newDetail = { id: Date.now(), text: "" };
+    const updatedDetails = [...skillDetails, newDetail];
+    setSkillDetails(updatedDetails);
+    onDataChange(skillItem.id, {
+      ...skillItem,
+      skillDetails: updatedDetails,
+    });
   };
 
   const handleDeleteDetail = (id) => {
-    setSkillDetails(skillDetails.filter((detail) => detail.id !== id));
+    const updatedDetails = skillDetails.filter((detail) => detail.id !== id);
+    setSkillDetails(updatedDetails);
+    onDataChange(skillItem.id, {
+      ...skillItem,
+      skillDetails: updatedDetails,
+    });
+  };
+
+  const handleSkillDetailChange = (index, e) => {
+    const updatedDetails = skillDetails.map((detail, i) =>
+      i === index ? { ...detail, text: e.target.value } : detail
+    );
+    setSkillDetails(updatedDetails);
+    onDataChange(skillItem.id, {
+      ...skillItem,
+      skillDetails: updatedDetails,
+    });
   };
 
   return (
@@ -24,14 +51,19 @@ function SkillsForm({ onDelete, isDeleteDisabled }) {
       <Input
         type="text"
         id="skillName"
+        name="skillName"
+        value={skillItem.skillName}
         placeholder="Programming Languages"
         className="rounded mb-3"
+        onChange={handleChange}
       />
       <Label htmlFor="skillDetails">Skill Details</Label>
       {skillDetails.map((detail, index) => (
         <div key={detail.id} className="flex items-center gap-2 mb-3">
           <Input
             type="text"
+            value={detail.text || ""}
+            onChange={(e) => handleSkillDetailChange(index, e)}
             placeholder="JavaScript"
             className="rounded flex-grow"
           />
@@ -64,24 +96,36 @@ function SkillsForm({ onDelete, isDeleteDisabled }) {
   );
 }
 
-export default function SkillFormsContainer() {
-  const [forms, setForms] = useState([{ id: 1 }]);
-
+export default function SkillFormsContainer({ skillsData, onSkillsDataChange }) {
   const handleAddForm = () => {
-    setForms([...forms, { id: Date.now() }]);
+    const newSkillItem = {
+      id: Date.now(),
+      skillName: "",
+      skillDetails: [{ id: Date.now(), text: "" }],
+    };
+    onSkillsDataChange([...skillsData, newSkillItem]);
   };
 
   const handleDeleteForm = (id) => {
-    setForms(forms.filter((form) => form.id !== id));
+    onSkillsDataChange(skillsData.filter((item) => item.id !== id));
+  };
+
+  const handleSkillsDataChange = (id, newData) => {
+    const updatedSkillsData = skillsData.map((skillItem) =>
+      skillItem.id === id ? { ...skillItem, ...newData } : skillItem
+    );
+    onSkillsDataChange(updatedSkillsData);
   };
 
   return (
     <div>
-      {forms.map((form, index) => (
+      {skillsData.map((skillItem, index) => (
         <SkillsForm
-          key={form.id}
-          onDelete={() => handleDeleteForm(form.id)}
+          key={skillItem.id}
+          skillItem={skillItem}
+          onDelete={() => handleDeleteForm(skillItem.id)}
           isDeleteDisabled={index === 0}
+          onDataChange={handleSkillsDataChange}
         />
       ))}
       <Button
@@ -94,5 +138,3 @@ export default function SkillFormsContainer() {
     </div>
   );
 }
-
-
