@@ -57,7 +57,7 @@ export default function Preview({ profileData }) {
 
                 <div className="text-right">
                   <span className="text-sm text-gray-500">
-                    {workItem.startDate} - {workItem.endDate}
+                    {workItem.startDate || workItem.endDate ? `${workItem.startDate} - ${workItem.endDate}` : null}
                   </span>
                 </div>
               </div>
@@ -91,8 +91,8 @@ export default function Preview({ profileData }) {
                 </div>
                 <div className="text-right">
                   <span className="text-sm text-gray-500">
-                    {educationItem.startDateEducation} -{" "}
-                    {educationItem.endDateEducation}
+
+                    {educationItem.startDateEducation || educationItem.endDateEducation ? `${educationItem.startDateEducation} - ${educationItem.endDateEducation}` : null}
                   </span>
                 </div>
               </div>
