@@ -1,3 +1,22 @@
+# CV Builder Application
+
+This is a **dynamic CV builder application** that allows users to create, preview, and download customized CVs in a structured format. Built with modern technologies, this application provides an intuitive interface for users to input personal, professional, and academic details, which are then compiled into a formatted CV.
+
+## Features
+
+- **Dynamic Input Forms**: Add and manage multiple sections such as profile, work experience, education, skills, and projects.
+- **Real-Time Preview**: See changes in real-time with a live preview of your CV.
+- **PDF Export**: Download the formatted CV as a DIN A4-sized PDF.
+- **Customizable Sections**: Add or remove details dynamically.
+- **Responsive Design**: Optimized for all screen sizes using TailwindCSS.
+
+## Tech Stack
+
+- **Frontend**: React with TailwindCSS for styling.
+- **UI Components**: Custom and reusable components using `@mui/icons-material` and `@shadcn`.
+- **PDF Generation**: [html2canvas](https://github.com/niklasvh/html2canvas) and [jsPDF](https://github.com/parallax/jsPDF) for generating PDFs.
+- **State Management**: React's `useState` for dynamic updates.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
