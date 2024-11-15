@@ -120,20 +120,95 @@ export default function Preview({ profileData }) {
               <div className="flex justify-between items-center mb-2">
                 {/* Left section: Company Name and Job Title */}
                 <div className="flex flex-col">
-                  <span className="font-bold text-lg">{workItem.companyName}</span>
-                  <span className="text-sm text-gray-600">{workItem.jobTitle}</span>
+                  <span className="font-bold text-lg">
+                    {workItem.companyName}
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    {workItem.jobTitle}
+                  </span>
                 </div>
 
                 {/* Right section: Start and End Dates */}
                 <div className="text-right">
                   <span className="text-sm text-gray-500">
-                  {workItem.startDate} - {workItem.endDate}
+                    {workItem.startDate} - {workItem.endDate}
                   </span>
                 </div>
               </div>
               <ul className="ml-10 text-sm mb-6">
                 {workItem.jobResponsibilities.map((resp, i) => (
                   <li key={i}>· {resp.text}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h3>Education</h3>
+          <div className="border"></div>
+          {profileData.education.map((educationItem, index) => (
+            <div key={educationItem.id}>
+              <div className="flex justify-between items-center mb-2">
+                {/* Left section: School Name and Degree */}
+                <div className="flex flex-col">
+                  <span className="font-bold text-lg">
+                    {educationItem.schoolName}
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    {educationItem.degree}
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    {educationItem.major}
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    {educationItem.gpa}
+                  </span>
+                </div>
+                <div className="text-right">
+                  <span className="text-sm text-gray-500">
+                    {educationItem.startDateEducation} -{" "}
+                    {educationItem.endDateEducation}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h3>Skills</h3>
+          <div className="border"></div>
+          {profileData.skills.map((skillItem, index) => (
+            <div key={skillItem.id}>
+              <div className="flex justify-between items-center mb-2">
+                <div className="flex flex-col">
+                  <span className="font-bold text-lg">
+                    {skillItem.skillName}
+                  </span>
+                </div>
+              </div>
+              <ul className="ml-10 text-sm mb-6">
+                {skillItem.skillDetails.map((detail, i) => (
+                  <li key={i}>· {detail.text}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div>
+          <h3>Projects</h3>
+          <div className="border"></div>
+          {profileData.projects.map((projectItem, index) => (
+            <div key={projectItem.id}>
+              <div className="flex justify-between items-center mb-2">
+                <div className="flex flex-col">
+                  <span className="font-bold text-lg">
+                    {projectItem.projectName}
+                  </span>
+                </div>
+              </div>
+              <ul className="ml-10 text-sm mb-6">
+                {projectItem.projectTools.map((tool, i) => (
+                  <li key={i}>· {tool.text}</li>
                 ))}
               </ul>
             </div>
