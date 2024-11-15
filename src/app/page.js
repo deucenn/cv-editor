@@ -8,11 +8,11 @@ import Preview from "./components/Preview";
 export default function Home() {
   const [profileData, setProfileData] = useState({
     profile: {
-      fullName: "",
-      email: "",
-      phoneNumber: "",
-      location: "",
-      link: "",
+      fullName: "John Smith",
+      email: "johnsmith@example.com",
+      phoneNumber: "(555) 123-4567",
+      location: "New York, NY",
+      link: "mycoolportfolio.com",
     },
     work: [
       {
