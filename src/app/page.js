@@ -40,37 +40,61 @@ export default function Home() {
         id: 1,
         skillName: "",
         skillDetails: [""],
-      }
+      },
     ],
     projects: [
       {
+        id: 1,
         projectName: "",
         projectDesc: "",
         projectLink: "",
-        projectTools: [""]
-      }
-    ]
+        projectTools: [""],
+      },
+    ],
   });
 
+  // Profile Data Change Handler
   const handleProfileDataChange = (newProfileData) => {
-    setProfileData((prev) => ({ ...prev, profile: newProfileData }));
+    setProfileData((prev) => ({
+      ...prev,
+      profile: {
+        ...prev.profile,
+        ...newProfileData,
+      },
+    }));
   };
 
+  // Work Data Change Handler
   const handleWorkDataChange = (updatedWorkData) => {
-    setProfileData((prev) => ({ ...prev, work: updatedWorkData }));
+    setProfileData((prev) => ({
+      ...prev,
+      work: updatedWorkData,
+    }));
   };
 
+  // Education Data Change Handler
   const handleEducationDataChange = (updatedEducationData) => {
-    setProfileData((prev) => ({ ...prev, education: updatedEducationData }));
+    setProfileData((prev) => ({
+      ...prev,
+      education: updatedEducationData,
+    }));
   };
 
+  // Skills Data Change Handler
   const handleSkillsDataChange = (updatedSkillsData) => {
-    setProfileData((prev) => ({...prev, skills: updatedSkillsData}))
-  }
+    setProfileData((prev) => ({
+      ...prev,
+      skills: updatedSkillsData,
+    }));
+  };
 
+  // Projects Data Change Handler
   const handleProjectsDataChange = (updatedProjectsData) => {
-    setProfileData((prev) => ({...prev, projects: updatedProjectsData}))
-  }
+    setProfileData((prev) => ({
+      ...prev,
+      projects: updatedProjectsData,
+    }));
+  };
 
   return (
     <>
@@ -89,3 +113,4 @@ export default function Home() {
     </>
   );
 }
+
