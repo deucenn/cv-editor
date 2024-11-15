@@ -2,6 +2,8 @@
 
 This is a **dynamic CV builder application** that allows users to create, preview, and download customized CVs in a structured format. Built with modern technologies, this application provides an intuitive interface for users to input personal, professional, and academic details, which are then compiled into a formatted CV.
 
+Link: https://cv-crafter.netlify.app/
+
 ## Features
 
 - **Dynamic Input Forms**: Add and manage multiple sections such as profile, work experience, education, skills, and projects.
