@@ -31,7 +31,7 @@ export default function Preview({ profileData }) {
       </Button>
       <div
         id="preview"
-        className="bg-white text-black font-serif w-[210mm] h-[297mm] border shadow-md p-6"
+        className="bg-white text-black font-serif w-[210mm] h-[297mm] border shadow-md p-6 md:w-[210mm] md:h-[297mm] max-w-full"
       >
         <h1 className="text-5xl flex flex-col items-center mt-5 mb-3">
           {profileData.profile.fullName}

@@ -99,7 +99,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <Input
           profileData={profileData}
           onProfileDataChange={handleProfileDataChange}
